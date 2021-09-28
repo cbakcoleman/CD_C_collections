@@ -11,16 +11,21 @@ namespace cd_c_collections
 
             // Three Basic Arrays
             // Create an array to hold integer values 0 through 9
-            int[] array1;
-            array1 = new int[] {1, 2, 3, 4, 5, 6, 7, 8, 9};
+            int[] array1 = new int[10];
+            for(var i = 0; i < array1.Length; i++)
+                array1[i] = i;
 
             // Create an array of the names "Tim", "Martin", "Nikki", & "Sara"
-            string[] names;
-            names = new string[] {"Tim", "Martin", "Nikki", "Sara"};
+            string[] names = new string[] 
+            {
+                "Tim", "Martin", "Nikki", "Sara"
+            };
 
 
             // Create an array of length 10 that alternates between true and false values, starting with true
-            bool[] array2 = {true, false, true, false, true, false, true, false, true, false};
+            bool[] array2 = new bool[10];
+            for(var i = 0; i < array2.Length; i++)
+                array2[i] = i % 2 == 0;
 
             // List of Flavors
             // Create a list of ice cream flavors that holds at least 5 different flavors (feel free to add more than 5!)
@@ -48,12 +53,18 @@ namespace cd_c_collections
             // Add key/value paris to this dictionary where:
             //      -> each key is a name from your names array
             //      -> each value is a randomly select a flavor from your flavors list
-            var random = new Random();
-            int index = random.Next(flavors.Count);
-            iceCream.Add($"{names[0]}", $"{flavors[3]}");
-            iceCream.Add($"{names[1]}", $"{flavors[0]}");
-            iceCream.Add($"{names[2]}", $"{flavors[1]}");
-            iceCream.Add($"{names[3]}", $"{flavors[2]}");
+            //var random = new Random();
+            //int index = random.Next(flavors.Count);
+            //iceCream.Add($"{names[0]}", $"{flavors[3]}");
+            //iceCream.Add($"{names[1]}", $"{flavors[0]}");
+            //iceCream.Add($"{names[2]}", $"{flavors[1]}");
+            //iceCream.Add($"{names[3]}", $"{flavors[2]}");
+            foreach (var name in names)
+                iceCream.Add(name, null);
+
+            Random rand = new Random();
+            foreach (var name in names)
+                iceCream[name] = (flavors[rand.Next(flavors.Count)]);
 
             // Attempt to randomize flavor index **ASK HOW TO MAKE IT CONTINUALLY RANDOM, instead of all same flavor**
             //iceCream.Add($"{names[2]}", $"{flavors[index]}");
